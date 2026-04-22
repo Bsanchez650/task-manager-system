@@ -41,31 +41,67 @@ public class BST {
     }
 
     public Task search(String dueDate) {
-        // find a task by due date
-        root = searchHelper(dueDate);
+        // find a task by due date]
+        Node result = searchHelper(root, dueDate);
+        return result != null ? result.data : null;
     }
 
-    private Node searchHelper(String dueDate){
-        if(root == null){
+    private Node searchHelper(Node node, String dueDate){
+        if(node == null){
             return null;
         }
 
-        if(root.data.getDuedate().equals(dueDate)){
-            return root;
-        }else if(roo){
+        if(node.data.getDuedate().equals(dueDate)){
+            return node;
+        }else if(dueDate.compareTo(node.data.getDuedate()) < 0){
+            return searchHelper(node.left, dueDate);
+        }else{
+            return searchHelper(node.right, dueDate);
         }
     }
 
     // three traversals — these matter for the project
     public void inOrder() {
         // left, root, right — gives tasks in sorted date order
+       inOrderHelper(root);
+    }
+
+    private void inOrderHelper(Node node){
+         if(node == null){
+            return;
+        }
+        inOrderHelper(node.left);
+        System.out.println(node.data);
+        inOrderHelper(node.right);
     }
 
     public void preOrder() {
         // root, left, right
+        preOrderHelper(root);
+    }
+
+    private void preOrderHelper(Node node){
+        if(node == null){
+            return;
+        }
+        System.out.println(node.data);
+        preOrderHelper(node.left);
+        preOrderHelper(node.right);
     }
 
     public void postOrder() {
         // left, right, root
+        postOrderHelper(root);
     }
+
+    private void postOrderHelper(Node node){
+        if(node == null){
+            return;
+        }
+
+        postOrderHelper(node.left);
+        postOrderHelper(node.right);
+        System.out.println(node.data);
+    }
+
 }
