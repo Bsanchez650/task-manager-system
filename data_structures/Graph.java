@@ -105,4 +105,10 @@ public class Graph {
         return false;
     }
 
+    public void removeEdge(int fromId, int toId) {
+    if (adjList.containsKey(fromId)) {
+        adjList.get(fromId).remove(Integer.valueOf(toId));
+    }
+    }
+
 }
