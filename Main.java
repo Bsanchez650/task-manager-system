@@ -15,7 +15,7 @@ public class Main {
             System.out.println("3. View All Tasks");
             System.out.println("4. Undo");
             System.out.println("5. Redo");
-            System.out.println("6. Search by Date");
+            System.out.println("6. Search by Id");
             System.out.println("7. View History");
             System.out.println("8. Schedule Next");
             System.out.println("9. Add Dependency");
